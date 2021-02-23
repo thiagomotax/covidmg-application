@@ -4,14 +4,12 @@ import {grey} from '../../utils/colors';
 
 export const Container = styled.View`
   width: 93.5%;
-  /* height: 330px; */
   background: white;
   overflow: hidden;
   border: 1px solid ${grey};
   border-radius: 5px;
   margin: 0 auto;
   justify-content: center;
-  margin-bottom: 100px;
 `;
 
 export const TitleChart = styled.Text`

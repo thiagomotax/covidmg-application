@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import {grey, primary} from '../../utils/colors';
 
 export const Container = styled.View`
-  margin: 0 3%;
+  margin: 0 5%;
   margin-bottom: 3%;
   padding: 2%;
   border: 1px solid ${grey};

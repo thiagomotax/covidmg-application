@@ -3,6 +3,7 @@ import Location from '../assets/icons/location.svg';
 import Search from '../assets/icons/search.svg';
 import Home from '../assets/icons/home.svg';
 import Tips from '../assets/icons/lightbulb.svg';
+import Donates from '../assets/icons/dollar-sign.svg';
 
 export const HeaderContainer = styled.View`
   min-width: 100%;
@@ -47,6 +48,12 @@ export const IconHome = styled(Home).attrs(({routeState}) => ({
 }))``;
 
 export const IconTips = styled(Tips).attrs(({routeState}) => ({
+  width: 28,
+  height: 28,
+  stroke: routeState ? '#000' : '#00000030',
+}))``;
+
+export const IconDonates = styled(Donates).attrs(({routeState}) => ({
   width: 28,
   height: 28,
   stroke: routeState ? '#000' : '#00000030',

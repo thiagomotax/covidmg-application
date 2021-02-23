@@ -5,9 +5,7 @@ export const Container = styled.View`
   background-color: #ffffff;
 `;
 
-export const WrapperCards = styled.View`
-  /* padding: 3%; */
-`;
+export const WrapperCards = styled.View``;
 
 export const ListCards = styled.FlatList.attrs({
   bounces: false,
@@ -17,7 +15,9 @@ export const ListCards = styled.FlatList.attrs({
     justifyContent: 'space-between',
     paddingHorizontal: '3%',
   },
+  contentContainerStyle: {
+    padding: '2%',
+    paddingTop: '4%',
+  },
   showsVerticalScrollIndicator: false,
-})`
-  padding-top: 30px;
-`;
+})``;

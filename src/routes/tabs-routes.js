@@ -4,7 +4,8 @@ const Tab = createBottomTabNavigator();
 
 import HomeRoutes from './home-routes';
 import TipsRoutes from './tips-routes';
-import {IconHome, LabelTabBar, IconTips} from '../styles';
+import DonatesRoutes from './donates-routes';
+import {IconHome, LabelTabBar, IconTips, IconDonates} from '../styles';
 
 const TabsRoutes = () => {
   const [routeActive, setRouteActive] = useState(0);
@@ -32,6 +33,17 @@ const TabsRoutes = () => {
           ),
         }}
         listeners={() => ({tabPress: (e) => setRouteActive(1)})}
+      />
+      <Tab.Screen
+        name="DonatesRoutes"
+        component={DonatesRoutes}
+        options={{
+          tabBarIcon: () => <IconDonates routeState={routeActive === 2} />,
+          tabBarLabel: () => (
+            <LabelTabBar routeState={routeActive === 2}>Doações</LabelTabBar>
+          ),
+        }}
+        listeners={() => ({tabPress: (e) => setRouteActive(2)})}
       />
     </Tab.Navigator>
   );
