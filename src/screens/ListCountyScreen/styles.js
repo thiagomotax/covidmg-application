@@ -20,6 +20,9 @@ export const WrapperList = styled.View``;
 
 export const List = styled.SectionList.attrs({
   bounces: false,
+  contentContainerStyle: {
+    paddingBottom: '15%',
+  },
 })``;
 
 export const ListHeaderItem = styled.View`

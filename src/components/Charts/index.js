@@ -60,9 +60,9 @@ const Charts = ({dataCountyCharts}) => {
   };
 
   return (
-    <Container>
+    <>
       {!loading && !error && dataCounty && (
-        <>
+        <Container>
           <TitleChart>Gráficos</TitleChart>
           <Chart
             data={data}
@@ -86,9 +86,9 @@ const Charts = ({dataCountyCharts}) => {
               <TextLabel>Óbitos</TextLabel>
             </Label>
           </WrapperLabels>
-        </>
+        </Container>
       )}
-    </Container>
+    </>
   );
 };
 

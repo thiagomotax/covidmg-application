@@ -15,7 +15,6 @@ import SuspectSVG from '../../assets/icons/eye.svg';
 
 export const ContainerCard = styled.View`
   width: 48%;
-  /* height: 200px; */
   padding: 3%;
   margin-bottom: 3.5%;
   border: 1px solid ${grey};

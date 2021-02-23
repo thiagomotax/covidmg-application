@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import Location from '../assets/icons/location.svg';
 import Search from '../assets/icons/search.svg';
 import Home from '../assets/icons/home.svg';
+import Tips from '../assets/icons/lightbulb.svg';
 
 export const HeaderContainer = styled.View`
   min-width: 100%;
@@ -39,7 +40,13 @@ export const IconSearch = styled(Search).attrs({
   stroke: '#000',
 })``;
 
-export const IconHome = styled(Home).attrs((routeState) => ({
+export const IconHome = styled(Home).attrs(({routeState}) => ({
+  width: 28,
+  height: 28,
+  stroke: routeState ? '#000' : '#00000030',
+}))``;
+
+export const IconTips = styled(Tips).attrs(({routeState}) => ({
   width: 28,
   height: 28,
   stroke: routeState ? '#000' : '#00000030',
@@ -49,5 +56,5 @@ export const LabelTabBar = styled.Text`
   color: ${({routeState}) => (routeState ? '#000' : '#00000030')};
   font-size: 12px;
   position: relative;
-  top: 3px;
+  top: 2px;
 `;

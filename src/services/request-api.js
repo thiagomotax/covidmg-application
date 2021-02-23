@@ -12,27 +12,35 @@ export class Requests {
         {
           label: 'Confirmados',
           color: primary,
-          value: head(response.data).confirmados,
+          value: head(response.data).confirmados
+            ? head(response.data).confirmados
+            : 0,
         },
         {
           label: 'Descartados',
           color: discard,
-          value: head(response.data).descartados,
+          value: head(response.data).descartados
+            ? head(response.data).descartados
+            : 0,
         },
         {
           label: 'Recuperados',
           color: recovered,
-          value: head(response.data).recuperados,
+          value: head(response.data).recuperados
+            ? head(response.data).recuperados
+            : 0,
         },
         {
           label: 'Óbitos',
           color: rip,
-          value: head(response.data).obitos,
+          value: head(response.data).obitos ? head(response.data).obitos : 0,
         },
         {
           label: 'Suspeitos',
           color: suspect,
-          value: head(response.data).suspeitos,
+          value: head(response.data).suspeitos
+            ? head(response.data).suspeitos
+            : 0,
         },
       ],
     };

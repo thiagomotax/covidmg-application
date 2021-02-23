@@ -85,13 +85,6 @@ const HomeScreen = ({navigation}) => {
               data={county.data}
               renderItem={renderItem}
               keyExtractor={keyExtractor}
-              horizontal={false}
-              numColumns={2}
-              columnWrapperStyle={{
-                justifyContent: 'space-between',
-                paddingHorizontal: '3%',
-              }}
-              showsVerticalScrollIndicator={false}
               ListFooterComponent={<Charts dataCountyCharts={countyCharts} />}
             />
           </WrapperCards>

@@ -1,9 +1,10 @@
 import React, {useState} from 'react';
-import {IconHome, LabelTabBar} from '../styles';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 const Tab = createBottomTabNavigator();
 
 import HomeRoutes from './home-routes';
+import TipsRoutes from './tips-routes';
+import {IconHome, LabelTabBar, IconTips} from '../styles';
 
 const TabsRoutes = () => {
   const [routeActive, setRouteActive] = useState(0);
@@ -20,6 +21,17 @@ const TabsRoutes = () => {
           ),
         }}
         listeners={() => ({tabPress: (e) => setRouteActive(0)})}
+      />
+      <Tab.Screen
+        name="TipsRoutes"
+        component={TipsRoutes}
+        options={{
+          tabBarIcon: () => <IconTips routeState={routeActive === 1} />,
+          tabBarLabel: () => (
+            <LabelTabBar routeState={routeActive === 1}>Dicas</LabelTabBar>
+          ),
+        }}
+        listeners={() => ({tabPress: (e) => setRouteActive(1)})}
       />
     </Tab.Navigator>
   );
