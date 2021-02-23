@@ -1,0 +1,84 @@
+import api from './axios-config';
+import {head, chain, map, orderBy} from 'lodash';
+import {primary, rip, recovered, suspect, discard} from '../utils/colors';
+
+export class Requests {
+  getDataCounty = async (county_id = 57) => {
+    const response = await api.get(`/ajax/casos/getDadosApp/${county_id}`);
+    return {
+      id: head(response.data).id,
+      municipio: head(response.data).municipio,
+      data: [
+        {
+          label: 'Confirmados',
+          color: primary,
+          value: head(response.data).confirmados,
+        },
+        {
+          label: 'Descartados',
+          color: discard,
+          value: head(response.data).descartados,
+        },
+        {
+          label: 'Recuperados',
+          color: recovered,
+          value: head(response.data).recuperados,
+        },
+        {
+          label: 'Óbitos',
+          color: rip,
+          value: head(response.data).obitos,
+        },
+        {
+          label: 'Suspeitos',
+          color: suspect,
+          value: head(response.data).suspeitos,
+        },
+      ],
+    };
+  };
+
+  getDataSearchCounty = async () => {
+    const response = await api.get('/ajax/pesquisa/getdadosmobile');
+    var formatResponse = chain(response.data)
+      .map((data, title) => ({
+        title:
+          title === 'jf'
+            ? 'Região de Juiz de Fora'
+            : title === 'entornos'
+            ? 'Entornos'
+            : 'Região de Ubá',
+        data: orderBy(
+          data.map((data) => ({id: parseInt(data[1]), city: data[0]})),
+          ['city'],
+          ['asc'],
+        ),
+      }))
+      .value();
+
+    return orderBy(formatResponse, ['title'], ['desc']);
+  };
+
+  getDataCountyCharts = async (county_id = 57) => {
+    const response = await api.get(`/Ajax/Graficos/getDados/${county_id}`);
+    return [
+      {
+        id: 0,
+        data: map(response.data, 'confirmados'),
+        color: () => primary,
+      },
+      {
+        id: 1,
+        data: map(response.data, 'obitos'),
+        color: () => rip,
+      },
+      {
+        id: 2,
+        data: map(response.data, 'recuperados'),
+        color: () => recovered,
+      },
+    ];
+  };
+}
+
+export default new Requests();
