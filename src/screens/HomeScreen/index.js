@@ -34,13 +34,16 @@ const HomeScreen = ({navigation}) => {
     setLoading(true);
 
     try {
-      const responseCountyStorage = JSON.parse(await Store.get('county_id'));
+      let responseCountyStorage = JSON.parse(await Store.get('county_id'));
+      console.log(responseCountyStorage);
       const responseChart = await Requests.getDataCountyCharts(
-        responseCountyStorage,
+        responseCountyStorage ? responseCountyStorage : 57,
       );
       setCountyCharts(responseChart);
-      setIdCountyStorage(responseCountyStorage);
-      var response = await Requests.getDataCounty(responseCountyStorage);
+      setIdCountyStorage(responseCountyStorage ? responseCountyStorage : 57);
+      var response = await Requests.getDataCounty(
+        responseCountyStorage ? responseCountyStorage : 57,
+      );
       console.log(response);
       setCounty(response);
       navigation.setOptions({

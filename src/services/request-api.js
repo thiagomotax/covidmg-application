@@ -1,12 +1,12 @@
 import api from './axios-config';
-import {head, chain, map, orderBy} from 'lodash';
+import _, {head, chain, map, orderBy, value} from 'lodash';
 import {primary, rip, recovered, suspect, discard} from '../utils/colors';
 
 export class Requests {
   getDataCounty = async (county_id = 57) => {
     const response = await api.get(`/ajax/casos/getDadosApp/${county_id}`);
     return {
-      id: head(response.data).id,
+      id: parseInt(head(response.data).id),
       municipio: head(response.data).municipio,
       data: [
         {
@@ -57,10 +57,14 @@ export class Requests {
             ? 'Entornos'
             : 'Região de Ubá',
         data: orderBy(
-          data.map((data) => ({id: parseInt(data[1]), city: data[0]})),
+          data.map((data) => ({
+            id: parseInt(data[1]),
+            city: data[0],
+          })),
           ['city'],
           ['asc'],
         ),
+        index: title === 'jf' ? 2 : title === 'entornos' ? 3 : 1,
       }))
       .value();
 

@@ -1,18 +1,20 @@
 import styled from 'styled-components';
 import {grey, primary} from '../../utils/colors';
 
-export const Container = styled.View`
+export const Container = styled.SafeAreaView`
   flex: 1;
   background-color: #ffffff;
 `;
 
 export const SearchBar = styled.TextInput.attrs({
   placeholder: 'Pesquise por municípios, regiões ou estados de MG',
+  autoFocus: true,
 })`
-  width: 100%;
+  width: 80%;
   height: 40px;
   padding: 0 2%;
   border-radius: 4px;
+  margin-left: 10px;
   background: #00000009;
 `;
 
@@ -29,11 +31,13 @@ export const ListHeaderItem = styled.View`
   background: white;
   padding: 4% 3%;
   background: white;
+  border: 1px solid transparent;
+  border-bottom-color: ${grey};
 `;
 
 export const ListHeaderItemText = styled.Text`
   width: 100%;
-  font-size: 15px;
+  font-size: 16px;
   font-weight: 500;
 `;
 
@@ -55,4 +59,9 @@ export const ListItemText = styled.Text`
   font-size: 13px;
   font-weight: ${({color}) => (color ? 400 : 300)};
   color: ${({color}) => (color ? primary : '#000')};
+`;
+
+export const SeparatorListView = styled.View`
+  width: 100%;
+  height: 20px;
 `;
