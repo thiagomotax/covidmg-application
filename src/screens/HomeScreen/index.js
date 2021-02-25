@@ -35,7 +35,6 @@ const HomeScreen = ({navigation}) => {
 
     try {
       let responseCountyStorage = JSON.parse(await Store.get('county_id'));
-      console.log(responseCountyStorage);
       const responseChart = await Requests.getDataCountyCharts(
         responseCountyStorage ? responseCountyStorage : 57,
       );
@@ -44,7 +43,6 @@ const HomeScreen = ({navigation}) => {
       var response = await Requests.getDataCounty(
         responseCountyStorage ? responseCountyStorage : 57,
       );
-      console.log(response);
       setCounty(response);
       navigation.setOptions({
         headerShown: true,

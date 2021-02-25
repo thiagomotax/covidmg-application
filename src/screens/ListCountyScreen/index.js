@@ -101,15 +101,12 @@ const ListCountyScreen = ({navigation}) => {
             return county;
           }
         });
-        console.log(filterData);
-        // county.data = filterData;
         return {title: county.title, data: filterData};
       });
       setAllCountyFilter(filter);
     } else {
       setAllCountyFilter(allCounty);
     }
-    // console.log(allCountyFilter);
   };
 
   return (

@@ -27,11 +27,11 @@ const Cards = ({data}) => {
     }
   };
   return (
-    <ContainerCard stroke={data.color}>
-      <WrapperTitleCard>
+    <ContainerCard isLastCard={data.label === 'Suspeitos'} stroke={data.color}>
+      <WrapperTitleCard background={data.background}>
         {checkIconData(data)}
-        <NumberCard>{data.value}</NumberCard>
       </WrapperTitleCard>
+      <NumberCard>{data.value}</NumberCard>
       <TitleCard>{data.label}</TitleCard>
     </ContainerCard>
   );

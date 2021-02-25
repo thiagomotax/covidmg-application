@@ -12,7 +12,7 @@ import {
   BulletLabel,
 } from './styles';
 
-import {filter, includes} from 'lodash';
+import {filter, includes, find} from 'lodash';
 const Charts = ({dataCountyCharts}) => {
   const [dataCounty, setdataCounty] = useState(null);
   const [AlldataCounty, setAlldataCounty] = useState(null);
@@ -55,8 +55,18 @@ const Charts = ({dataCountyCharts}) => {
     },
   };
 
-  const data = {
-    datasets: dataCounty,
+  const handleChangeLine = (id) => {
+    if (find(dataCounty, {id}) && dataCounty.length - 1 >= 1) {
+      const filterData = dataCounty.filter((data) => {
+        if (data.id !== id) {
+          return data;
+        }
+      });
+      setdataCounty(filterData);
+    }
+    if (!find(dataCounty, {id})) {
+      setdataCounty([...dataCounty, find(AlldataCounty, {id})]);
+    }
   };
 
   return (
@@ -65,23 +75,31 @@ const Charts = ({dataCountyCharts}) => {
         <Container>
           <TitleChart>Gráficos</TitleChart>
           <Chart
-            data={data}
+            data={{
+              datasets: dataCounty,
+            }}
             width={Dimensions.get('window').width - 80}
-            height={320}
+            height={240}
             chartConfig={chartConfig}
             animate
           />
 
           <WrapperLabels>
-            <Label>
+            <Label
+              onPress={() => handleChangeLine(0)}
+              opacity={!find(dataCounty, {id: 0})}>
               <BulletLabel color={'#6979F8'} />
               <TextLabel>Confirmados</TextLabel>
             </Label>
-            <Label>
+            <Label
+              onPress={() => handleChangeLine(1)}
+              opacity={!find(dataCounty, {id: 1})}>
               <BulletLabel color={'#00C48C'} />
               <TextLabel>Recuperados</TextLabel>
             </Label>
-            <Label>
+            <Label
+              onPress={() => handleChangeLine(2)}
+              opacity={!find(dataCounty, {id: 2})}>
               <BulletLabel color={'#FF6464'} />
               <TextLabel>Óbitos</TextLabel>
             </Label>

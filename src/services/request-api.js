@@ -1,6 +1,17 @@
 import api from './axios-config';
 import _, {head, chain, map, orderBy, value} from 'lodash';
-import {primary, rip, recovered, suspect, discard} from '../utils/colors';
+import {
+  primary,
+  rip,
+  recovered,
+  suspect,
+  discard,
+  primaryBackground,
+  discardBackground,
+  recoveredBackground,
+  ripBackground,
+  suspectBackground,
+} from '../utils/colors';
 
 export class Requests {
   getDataCounty = async (county_id = 57) => {
@@ -12,6 +23,7 @@ export class Requests {
         {
           label: 'Confirmados',
           color: primary,
+          background: primaryBackground,
           value: head(response.data).confirmados
             ? head(response.data).confirmados
             : 0,
@@ -19,6 +31,7 @@ export class Requests {
         {
           label: 'Descartados',
           color: discard,
+          background: discardBackground,
           value: head(response.data).descartados
             ? head(response.data).descartados
             : 0,
@@ -26,6 +39,7 @@ export class Requests {
         {
           label: 'Recuperados',
           color: recovered,
+          background: recoveredBackground,
           value: head(response.data).recuperados
             ? head(response.data).recuperados
             : 0,
@@ -33,11 +47,13 @@ export class Requests {
         {
           label: 'Óbitos',
           color: rip,
+          background: ripBackground,
           value: head(response.data).obitos ? head(response.data).obitos : 0,
         },
         {
           label: 'Suspeitos',
           color: suspect,
+          background: suspectBackground,
           value: head(response.data).suspeitos
             ? head(response.data).suspeitos
             : 0,
@@ -81,13 +97,13 @@ export class Requests {
       },
       {
         id: 1,
-        data: map(response.data, 'obitos'),
-        color: () => rip,
+        data: map(response.data, 'recuperados'),
+        color: () => recovered,
       },
       {
         id: 2,
-        data: map(response.data, 'recuperados'),
-        color: () => recovered,
+        data: map(response.data, 'obitos'),
+        color: () => rip,
       },
     ];
   };

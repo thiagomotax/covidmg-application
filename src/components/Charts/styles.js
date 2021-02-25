@@ -39,6 +39,7 @@ export const Label = styled.TouchableOpacity`
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  opacity: ${({opacity}) => (opacity ? 0.1 : 1)};
 `;
 
 export const TextLabel = styled.Text``;
