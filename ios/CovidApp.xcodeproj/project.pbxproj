@@ -194,7 +194,6 @@
 				6CBF934D2D5ACF1718ADA447 /* Pods-CovidApp-tvOSTests.debug.xcconfig */,
 				B57D04AC252D1D0399A3FF05 /* Pods-CovidApp-tvOSTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};

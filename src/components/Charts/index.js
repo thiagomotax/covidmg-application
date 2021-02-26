@@ -13,6 +13,8 @@ import {
 } from './styles';
 
 import {filter, includes, find} from 'lodash';
+
+import {primary, recovered, rip} from '../../utils/colors';
 const Charts = ({dataCountyCharts}) => {
   const [dataCounty, setdataCounty] = useState(null);
   const [AlldataCounty, setAlldataCounty] = useState(null);
@@ -85,22 +87,16 @@ const Charts = ({dataCountyCharts}) => {
           />
 
           <WrapperLabels>
-            <Label
-              onPress={() => handleChangeLine(0)}
-              opacity={!find(dataCounty, {id: 0})}>
-              <BulletLabel color={'#6979F8'} />
+            <Label onPress={() => handleChangeLine(0)}>
+              <BulletLabel color={primary} />
               <TextLabel>Confirmados</TextLabel>
             </Label>
-            <Label
-              onPress={() => handleChangeLine(1)}
-              opacity={!find(dataCounty, {id: 1})}>
-              <BulletLabel color={'#00C48C'} />
+            <Label onPress={() => handleChangeLine(1)}>
+              <BulletLabel color={recovered} />
               <TextLabel>Recuperados</TextLabel>
             </Label>
-            <Label
-              onPress={() => handleChangeLine(2)}
-              opacity={!find(dataCounty, {id: 2})}>
-              <BulletLabel color={'#FF6464'} />
+            <Label onPress={() => handleChangeLine(2)}>
+              <BulletLabel color={rip} />
               <TextLabel>Óbitos</TextLabel>
             </Label>
           </WrapperLabels>
